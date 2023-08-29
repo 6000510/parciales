@@ -6,13 +6,25 @@
 <title> Tranformacion Conjuntas</title>
 </head>
 <body>
-<h1>Transformacion de Vectores</h1>
+<h1>Transformaciones Conjuntas</h1>
+
+<p>Vector para la transformacion:</p>
+<label for="vector1X"></label>
+<label for="vector1Y"></label>
+<label for="vector1Z">p1</label>
+<input type="text" id="Vector 1" placeholder="Ej: (0, 0,4)" style="width: 150px;"><br>
+
+<p>Ingrese las coordenadas del vector 2:</p>
+<label for="vector2X"></label>
+<label for="vector2Y"></label>
+<label for="vector2Z">p2:</label>
+<input type="text" id="Vector 2" placeholder="Ej: (8, 9,4)" style="width: 150px;"><br>
 
 <p>Vector para las transformaciones:</p>
 <label for="transforminicial">Transformación Inicial:</label>
-<input type="text" id="transform1" placeholder="Ej: T(5, 5,4)" style="width: 300px;"><br>
+<input type="text" id="transforminicial" placeholder="Ej: T(5, 5,4)" style="width: 200px;"><br>
 <label for="transformfinal">Transformación Final :</label>
-<input type="text" id="transformfinal" placeholder="Ej: R(3,3,5), S(6, 8,5)" style="width: 300px;"><br>
+<input type="text" id="transformfinal" placeholder="Ej: R(3,3,5), S(6, 8,5)" style="width: 200px;"><br>
 <button onclick="calcularTransformacion()">Procesar</button>
 
 <h2>Vector Resultado</h2>
@@ -44,36 +56,43 @@ function calcularTransformacion() {
     const transforminicialArgsParsed = transforminicialArgs.split(",").map(arg => parseFloat(arg));
     const transformfinalArgsParsed = transformfinalArgs.split(",").map(arg => parseFloat(arg));
 
-    const x = parseFloat(prompt("Ingrese el valor de x:"));
-    const y = parseFloat(prompt("Ingrese el valor de y:"));
-    const z = parseFloat(prompt("Ingrese el valor de z:"));
+    const vector1X = parseFloat(document.getElementById("vector1X").value);
+    const vector1Y = parseFloat(document.getElementById("vector1Y").value);
+    const vector1Z = parseFloat(document.getElementById("vector1Z").value);
 
-    let result = [x, y, z];
+    const vector2X = parseFloat(document.getElementById("vector2X").value);
+    const vector2Y = parseFloat(document.getElementById("vector2Y").value);
+    const vector2Z = parseFloat(document.getElementById("vector2Z").value);
+
+    const vector1 = [vector1X, vector1Y, vector1Z];
+    const vector2 = [vector2X, vector2Y, vector2Z];
+
+    let result1 = vector1.slice();
+    let result2 = vector2.slice();
+
     
-    if (transforminicialName === "T"{
-        result = translate(result[0], result[1], transforminicialArgsParsed[0], transforminicialArgsParsed[1]);
-    }else if (transforminicialName === "R"{
-        result = rotate(result[0], result[1], transforminicialArgsParsed[0]);
-    }else if (transforminicialName === "S"{
-        result = scale(result[0], result[1], transforminicialArgsParsed[0], transforminicial[1]);
+    if (transform1Name === "translate") {
+        result1 = translate(result1, transform1ArgsParsed[0], transform1ArgsParsed[1], transform1ArgsParsed[2]);
+    } else if (transform1Name === "rotateX") {
+        result1 = rotateX(result1, transform1ArgsParsed[0]);
+    } else if (transform1Name === "scale") {
+        result1 = scale(result1, transform1ArgsParsed[0], transform1ArgsParsed[1], transform1ArgsParsed[2]);
     }
 
-    if (transformfinalName === "T"{
-        result = translate(result[0], result[1], transformfinalArgsParsed[0], transformfinalArgsParsed[1]);
-    }else if (transformfinalName === "R"{
-        result = rotate(result[0], result[1], transformfinalArgsParsed[0]);
-    }else if (transformfinalName === "S"{
-        result = scale(result[0], result[1], transformfinalArgsParsed[0], transformfinal[1]);
+    if (transform2Name === "translate") {
+        result2 = translate(result2, transform2ArgsParsed[0], transform2ArgsParsed[1], transform2ArgsParsed[2]);
+    } else if (transform2Name === "rotateX") {
+        result2 = rotateX(result2, transform2ArgsParsed[0]);
+    } else if (transform2Name === "scale") {
+        result2 = scale(result2, transform2ArgsParsed[0], transform2ArgsParsed[1], transform2ArgsParsed[2]);
     }
-    
 
     const resultadoElement = document.getElementById("resultado");
-    resultadoElement.textContent = `Resultado: (${result[0]}, ${result[1]}, ${result[2]})`;
+    resultadoElement.textContent = `Resultado Vector 1: (${result1[0]}, ${result1[1]}, ${result1[2]}) | Resultado Vector 2: (${result2[0]}, ${result2[1]}, ${result2[2]})`;
 }
 </script>
 </body>
 </html>
-
 
 
     
