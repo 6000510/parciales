@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title> Tranformacion Vectores</title>
+<title> Tranformacion Conjuntas</title>
 </head>
 <body>
 <h1>Transformacion de Vectores</h1>
@@ -17,3 +17,42 @@
 
 <h2>Vector Resultado</h2>
 <p id="resultado"></p>
+
+<script>
+// Función para aplicar una traslación a un vector (x, y)
+function translate(x, y, tx, ty) {
+    return [x + tx, y + ty];
+}
+
+
+// Función para aplicar una rotación a un vector (x, y) en grados
+function rotate(x, y, angleDegrees) {
+    const angleRadians = (angleDegrees * Math.PI) / 180;
+    const newX = x * Math.cos(angleRadians) - y * Math.sin(angleRadians);
+    const newY = x * Math.sin(angleRadians) + y * Math.cos(angleRadians);
+    return [newX, newY];
+}
+
+// Función para aplicar un escalado a un vector (x, y)
+function scale(x, y, scaleX, scaleY) {
+    return [x * scaleX, y * scaleY];
+}
+
+function calcularTransformacion() {
+    const transforminicialInput = document.getElementById("transforminicial").value;
+    const transformfinalInput = document.getElementById("transformfinal").value;
+
+    const [transforminicialName, transforminicialArgs] = transforminicialInput.split("(");
+    const [transformfinalName, transformfinalArgs] = transformfinalInput.split("(");
+
+    const transforminicialArgsParsed = transforminicialArgs.split(",").map(arg => parseFloat(arg));
+    const transformfinalArgsParsed = transformfinalArgs.split(",").map(arg => parseFloat(arg));
+
+    const x = parseFloat(prompt("Ingrese el valor de x:"));
+    const y = parseFloat(prompt("Ingrese el valor de y:"));
+
+    let result = [x, y];
+    
+
+
+    
