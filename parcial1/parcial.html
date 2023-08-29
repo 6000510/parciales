@@ -8,7 +8,7 @@
 <body>
 <h1>Transformacion de Vectores</h1>
 
-<p>Ingrese las transformaciones:</p>
+<p>Vector para las transformaciones:</p>
 <label for="transforminicial"Transformacion inicial:</label>
 <input type="text" id="transforminicial placeholder: style="width: 300px;"><br>
 <label for="transformfinal"Tranformacion final:</label>
@@ -53,6 +53,25 @@ function calcularTransformacion() {
 
     let result = [x, y];
     
+    if (transforminicialName === "T"{
+        result = translate(result[0], result[1], transforminicialArgsParsed[0], transforminicialArgsParsed[1]);
+    }else if (transforminicialName === "R"{
+        result = rotate(result[0], result[1], transforminicialArgsParsed[0]);
+    }else if (transforminicialName === "S"{
+        result = scale(result[0], result[1], transforminicialArgsParsed[0], transforminicial[1]);
+    }
+
+    if (transformfinalName === "T"{
+        result = translate(result[0], result[1], transformfinalArgsParsed[0], transformfinalArgsParsed[1]);
+    }else if (transformfinalName === "R"{
+        result = rotate(result[0], result[1], transformfinalArgsParsed[0]);
+    }else if (transformfinalName === "S"{
+        result = scale(result[0], result[1], transformfinalArgsParsed[0], transformfinal[1]);
+    }
+    
+
+
+
 
 
     
