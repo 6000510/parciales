@@ -9,33 +9,29 @@
 <h1>Transformacion de Vectores</h1>
 
 <p>Vector para las transformaciones:</p>
-<label for="transforminicial"Transformacion inicial:</label>
-<input type="text" id="transforminicial placeholder: style="width: 300px;"><br>
-<label for="transformfinal"Tranformacion final:</label>
-<input type="text" id="transformfinal placeholder: style="width: 300px;"><br>
-<button onclick="calcularTransformacion()">Calcular</button>
+<label for="transforminicial">Transformación Inicial:</label>
+<input type="text" id="transform1" placeholder="Ej: T(5, 5,4)" style="width: 300px;"><br>
+<label for="transformfinal">Transformación Final :</label>
+<input type="text" id="transformfinal" placeholder="Ej: R(3,3,5), S(6, 8,5)" style="width: 300px;"><br>
+<button onclick="calcularTransformacion()">Procesar</button>
 
 <h2>Vector Resultado</h2>
 <p id="resultado"></p>
 
 <script>
-// Función para aplicar una traslación a un vector (x, y)
-function translate(x, y, tx, ty) {
-    return [x + tx, y + ty];
+function translate(x, y, z, tx, ty, tz) {
+    return [x + tx, y + ty, z + tz];
 }
 
-
-// Función para aplicar una rotación a un vector (x, y) en grados
-function rotate(x, y, angleDegrees) {
+function rotateX(x, y, z, angleDegrees) {
     const angleRadians = (angleDegrees * Math.PI) / 180;
-    const newX = x * Math.cos(angleRadians) - y * Math.sin(angleRadians);
-    const newY = x * Math.sin(angleRadians) + y * Math.cos(angleRadians);
-    return [newX, newY];
+    const newY = y * Math.cos(angleRadians) - z * Math.sin(angleRadians);
+    const newZ = y * Math.sin(angleRadians) + z * Math.cos(angleRadians);
+    return [x, newY, newZ];
 }
 
-// Función para aplicar un escalado a un vector (x, y)
-function scale(x, y, scaleX, scaleY) {
-    return [x * scaleX, y * scaleY];
+function scale(x, y, z, scaleX, scaleY, scaleZ) {
+    return [x * scaleX, y * scaleY, z * scaleZ];
 }
 
 function calcularTransformacion() {
@@ -50,8 +46,9 @@ function calcularTransformacion() {
 
     const x = parseFloat(prompt("Ingrese el valor de x:"));
     const y = parseFloat(prompt("Ingrese el valor de y:"));
+    const z = parseFloat(prompt("Ingrese el valor de z:"));
 
-    let result = [x, y];
+    let result = [x, y, z];
     
     if (transforminicialName === "T"{
         result = translate(result[0], result[1], transforminicialArgsParsed[0], transforminicialArgsParsed[1]);
@@ -70,7 +67,12 @@ function calcularTransformacion() {
     }
     
 
-
+    const resultadoElement = document.getElementById("resultado");
+    resultadoElement.textContent = `Resultado: (${result[0]}, ${result[1]}, ${result[2]})`;
+}
+</script>
+</body>
+</html>
 
 
 
